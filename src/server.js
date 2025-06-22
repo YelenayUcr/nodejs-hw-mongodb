@@ -11,17 +11,16 @@ function setupServer() {
   app.use(express.json());
   app.use(pino);
 
+  const contactsRouter = require('./routes/contactsRouter');
+  app.use('/contacts', contactsRouter);
+  
   app.use((req, res) => {
     res.status(404).json({ message: 'Not found' });
   });
-
+  
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-    
-  const contactsRouter = require('./routes/contactsRouter');
-  app.use('/contacts', contactsRouter);
+    console.log(`Server is running on port ${PORT}`);});
 }
 
 module.exports = setupServer;
