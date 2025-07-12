@@ -6,7 +6,7 @@ module.exports = {
   extends: ['eslint:recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module', // bunu ekle
+    sourceType: 'module', 
   },
   rules: {},
 };
