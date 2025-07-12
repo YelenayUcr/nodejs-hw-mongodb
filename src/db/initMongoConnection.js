@@ -1,24 +1,18 @@
-/* global process */
+import mongoose from 'mongoose';
+import { env } from '../utils/env.js';
 
-const mongoose = require('mongoose');
+export const initMongoDB = async () => {
+  const user = env('MONGODB_USER');
+  const password = env('MONGODB_PASSWORD');
+  const url = env('MONGODB_URL');
+  const dbName = env('MONGODB_DB');
 
-async function initMongoConnection() {
+  const connectionString = `mongodb+srv://${user}:${password}@${url}/${dbName}?retryWrites=true&w=majority&appName=Oguzhan`;
   try {
-    const {
-      MONGODB_USER,
-      MONGODB_PASSWORD,
-      MONGODB_URL,
-      MONGODB_DB,
-    } = process.env;
-
-    const uri = `mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_URL}/${MONGODB_DB}?retryWrites=true&w=majority`;
-
-    await mongoose.connect(uri);
-    console.log('Mongo connection successfully established!');
+    await mongoose.connect(connectionString);
+    console.log('MongoDB connection established successfully.');
   } catch (error) {
-    console.error('Mongo connection failed:', error.message);
-    process.exit(1);
+    console.error('Error connecting to MongoDB:', error);
+    throw error;
   }
-}
-
-module.exports = initMongoConnection;
+};
