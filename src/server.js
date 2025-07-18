@@ -38,7 +38,7 @@ export const setupServer = async () => {
     });
   });
 
-app.use('/api/contacts', contactsRouter);
+app.use('/api', contactsRouter);
 
   app.use(notFoundHandler);
 
