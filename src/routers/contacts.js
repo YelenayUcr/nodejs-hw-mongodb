@@ -14,8 +14,8 @@ import { isValidId } from "../middlewares/isValidId.js";
 import { contactAddSchema, contactUpdateSchema } from "../schemas/contactsSchemas.js";
 
 const router = Router();
-
-
+    
+router.get('/contacts', ctrlWrapper(getContactsController));
 router.get('/', ctrlWrapper(getContactsController)); // isValidId YOK
 router.get('/:contactId', isValidId, ctrlWrapper(getContactByIdController)); // isValidId VAR
 router.post('/', validateBody(contactAddSchema), ctrlWrapper(createContactController));
