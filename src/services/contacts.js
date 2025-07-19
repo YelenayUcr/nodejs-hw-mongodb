@@ -9,10 +9,8 @@ export const getAllContacts = async (options = {}) => {
     limit = 10
   } = options;
 
-  // Toplam item sayısını al
   const totalItems = await Contact.countDocuments(filter);
-  
-  // Contacts'ları al
+
   const contacts = await Contact.find(filter)
     .sort({ [sortBy]: sortDirection })
     .skip(skip)
