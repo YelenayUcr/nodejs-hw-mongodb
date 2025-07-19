@@ -39,7 +39,7 @@ export const setupServer = async () => {
   });
 
 app.use('/', contactsRouter);
-
+app.use('/contacts', contactsRouter); 
   app.use(notFoundHandler);
 
   app.use(errorHandler);
