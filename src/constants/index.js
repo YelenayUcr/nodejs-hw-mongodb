@@ -1,0 +1,1 @@
+export const SORT_ORDER = 24 * 60 * 60 * 1000;
