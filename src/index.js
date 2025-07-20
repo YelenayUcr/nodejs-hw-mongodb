@@ -27,13 +27,12 @@ app.get('/auth', (req, res) => {
   });
 });
 
-// Auth endpoints (placeholder responses matching homework requirements)
 app.post('/auth/register', (req, res) => {
   res.status(201).json({
     status: 201,
     message: 'Successfully registered a user!',
     data: {
-      // User data will be here (without password)
+ 
     }
   });
 });
